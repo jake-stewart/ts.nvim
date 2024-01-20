@@ -22,6 +22,10 @@ local function mkdir(path)
     return uv.fs_mkdir(path, 511)
 end
 
+local function clearCmdline()
+    vim.fn.feedkeys(":", "nx")
+end
+
 local function treeCheckModified(root, modifiedSince)
     local handle = assert(uv.fs_scandir(root))
 
@@ -123,7 +127,7 @@ local function setup()
             }, false, {})
             return
         end
-        vim.cmd.echo("'\r[tsnvim]: installing...'");
+        print("[tsnvim]: installing...");
         vim.fn.system({
             "npm",
             "--prefix",
@@ -137,7 +141,9 @@ local function setup()
     local errorMessage
 
     if needsRecompile(modifiedTimestampPath, sourcePath) then
-        vim.cmd.echo("'\r[tsnvim]: compiling... '");
+        vim.cmd.messages("clear")
+        clearCmdline()
+        print("[tsnvim]: compiling...");
         local output = vim.fn.system({
             "npm",
             "exec",
@@ -169,7 +175,7 @@ local function setup()
 
             local timestamp = vim.fn.strftime('%s')
             writeFile(modifiedTimestampPath, timestamp)
-            vim.cmd.echon("'\r                      '");
+            clearCmdline()
         end
     end
 
