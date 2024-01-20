@@ -1,0 +1,9 @@
+{
+    "name": "tsnvim",
+    "version": "1.0.0",
+    "types": "./types",
+    "dependencies": {
+        "typescript": "^5.2.2",
+        "@typescript-to-lua/language-extensions": "^1.19.0"
+    }
+}

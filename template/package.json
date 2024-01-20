@@ -1,0 +1,9 @@
+{
+    "name": "nvim_config",
+    "version": "1.0.0",
+    "dependencies": {
+        "@typescript-to-lua/language-extensions": "^1.19.0",
+        "tsnvim": "^1.0.0",
+        "typescript-to-lua": "^1.23.0"
+    }
+}
