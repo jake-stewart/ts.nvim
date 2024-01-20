@@ -16,14 +16,16 @@ configure neovim using typescript, thanks to [tstl](https://typescripttolua.gith
     - `lua.math`
     - `lua.pcall`
 * many type definitions & lsp documentation
+    - `vim.fn`
+    - `vim.cmd`
+    - `vim.api`
+    - `vim.keymap`
+    - `vim.o`, `vim.bo`, `vim.wo`, `vim.go`
+    - `vim.opt`
     - `vim.ui`
     - `vim.version`
     - `vim.json`
     - `vim.loop`
-    - `vim.o`, `vim.bo`, `vim.wo`, `vim.go`
-    - `vim.opt`
-    - `vim.keymap`
-    - `vim.api`
     - `vim.spell`
     - `vim.mpack`
     - `vim.fs`
