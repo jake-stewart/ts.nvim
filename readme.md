@@ -56,5 +56,15 @@ require("tsnvim").setup()
 ### example config
 use [my config](https://github.com/jake-stewart/dotfiles/tree/main/.config/nvim/typescript) as reference
 
+### notes
+1. boolean coercion works like lua, so `0` is `true`.
+2. tstl uses type annotations for lua code generation:
+```typescript
+// without the any[], tstl wouldn't know if `forEach` was a table field or method call:
+lua.require("foo").setup((table: any[]) => {
+    table.forEach(...);
+})
+```
+
 ### why?
 lua indexes from 1. typescript does not
