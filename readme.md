@@ -54,7 +54,7 @@ require("tsnvim").setup()
 ```
 
 ### example config
-use [my config](jake-stewart/dotfiles) as reference
+use [my config](https://github.com/jake-stewart/dotfiles/tree/main/.config/nvim/typescript) as reference
 
 ### why?
 lua indexes from 1. typescript does not
