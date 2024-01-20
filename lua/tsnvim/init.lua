@@ -110,12 +110,28 @@ local function setup()
             packageJsonPath)
     end
 
+    if not fileExists(sourcePath .. "/node_modules") then
+        if vim.fn.executable("npm") == 0 then
+            vim.api.nvim_echo({
+                {"[tsnvim]: npm is not installed or executable", "Error"},
+            }, false, {})
+            return
+        end
+        vim.cmd.echo("'\r[tsnvim]: installing...'");
+        vim.fn.system({
+            "npm",
+            "--prefix",
+            sourcePath,
+            "install"
+        })
+    end
+
     local transpiledPath = cachePath .. "/transpiled.lua"
     local compiledPath = cachePath .. "/compiled"
     local errorMessage
 
     if needsRecompile(modifiedTimestampPath, sourcePath) then
-        vim.cmd.echo("'compiling...'");
+        vim.cmd.echo("'\r[tsnvim]: compiling... '");
         local output = vim.fn.system({
             "npm",
             "exec",
@@ -147,7 +163,7 @@ local function setup()
 
             local timestamp = vim.fn.strftime('%s')
             writeFile(modifiedTimestampPath, timestamp)
-            vim.cmd.echon("'\r            '");
+            vim.cmd.echon("'\r                      '");
         end
     end
 
@@ -156,7 +172,7 @@ local function setup()
     if errorMessage then
         vim.defer_fn(function()
             vim.api.nvim_echo({
-                {errorMessage, "Error"},
+                {"[tsnvim]: " .. errorMessage, "Error"},
             }, false, {})
         end, 100)
     end
