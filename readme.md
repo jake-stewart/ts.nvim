@@ -18,6 +18,7 @@ configure neovim using typescript, thanks to [tstl](https://typescripttolua.gith
 * many type definitions & lsp documentation
     - `vim.fn`
     - `vim.cmd`
+    - `vim.v`
     - `vim.api`
     - `vim.keymap`
     - `vim.o`, `vim.bo`, `vim.wo`, `vim.go`
