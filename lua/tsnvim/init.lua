@@ -98,6 +98,12 @@ local function setup()
     ensureDirExists(sourcePath .. "/src")
     ensureDirExists(cachePath)
 
+    local mainTsPath = sourcePath .. "/src/main.ts"
+    if not fileExists(mainTsPath) then
+        uv.fs_copyfile(dataPath .. "/template/main.ts",
+            mainTsPath)
+    end
+
     local tsconfigPath = sourcePath .. "/tsconfig.json"
     if not fileExists(tsconfigPath) then
         uv.fs_copyfile(dataPath .. "/template/tsconfig.json",
