@@ -141,7 +141,6 @@ local function setup()
     local errorMessage
 
     if needsRecompile(modifiedTimestampPath, sourcePath) then
-        vim.cmd.messages("clear")
         clearCmdline()
         print("[tsnvim]: compiling...");
         local output = vim.fn.system({
