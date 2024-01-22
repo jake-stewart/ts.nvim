@@ -153,6 +153,8 @@ local function setup()
             "--noHeader",
             "--noImplicitSelf",
             "--noImplicitGlobalVariables",
+            "--luaLibImport",
+            "require-minimal",
             "--luaBundle",
             transpiledPath,
             "--luaBundleEntry",
